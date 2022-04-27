@@ -428,4 +428,9 @@ form {
 
 .book-title {
   font-weight: bold;
+  max-width: 100%;
+}
+
+.author {
+    max-width: 290;
 }

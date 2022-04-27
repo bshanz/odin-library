@@ -93,6 +93,7 @@ form.addEventListener("submit", (e) => {
     readButton.innerHTML = "Not read";
   }
   bookTitle.classList.add("book-title");
+  bookAuthor.classList.add("author");
   deleteButton.classList.add("delete-button");
   deleteButton.setAttribute("id", "remove-button");
 
