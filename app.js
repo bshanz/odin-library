@@ -9,6 +9,7 @@ const read = document.getElementById("read-button");
 const readDom = document.getElementById("read-dom");
 const grid = document.getElementById("grid");
 const remove = document.getElementById("remove-button");
+const form = document.querySelector('form');
 
 // create library array
 
@@ -28,7 +29,7 @@ function Book(title, author, pages, read) {
 
 // enable user to click submitBook
 
-submitBook.addEventListener("click", (e) => {
+form.addEventListener("submit", (e) => {
   // let page load first
   e.preventDefault();
 
