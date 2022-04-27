@@ -33,13 +33,15 @@ submitBook.addEventListener("click", (e) => {
   e.preventDefault();
 
   // create new book
-  const book1 = new Book(title.value, author.value, pages.value, readDom.checked);
-
-  console.log(read.checked);
-  console.log
+  const book1 = new Book(
+    title.value,
+    author.value,
+    pages.value,
+    readDom.checked
+  );
 
   // add ID to new book
-  book1.id = Date.now();
+  book1.id = `${book1.title}${book1.author}${book1.pages}`;
 
   // add new book to myLibrary
 
@@ -75,9 +77,9 @@ submitBook.addEventListener("click", (e) => {
   bookTitle.innerText = book1.title;
   bookAuthor.innerText = book1.author;
   bookPages.innerText = `${book1.pages} pages`;
-  readButton.value = Date.now();
+  readButton.value = `${book1.title}${book1.author}${book1.pages}`;
   deleteButton.innerHTML = "Remove";
-  deleteButton.value = Date.now();
+  deleteButton.value = `${book1.title}${book1.author}${book1.pages}`;
 
   console.log(deleteButton.value);
 
@@ -110,24 +112,30 @@ function removeButton(e) {
 }
 
 function changeRead(e) {
-  const target = e.target;
-  if (e.target.classList.contains("read-button")) {
-    e.target.classList.remove("read-button");
-    e.target.classList.add("not-read-button");
-    e.target.innerHTML = "Not Read";
-  } else {
-    e.target.classList.add("read-button");
-    e.target.classList.remove("not-read-button");
-    e.target.innerHTML = "Read";
+  //const target = e.target;
+  for (let i = 0; i < myLibrary.length; i++) {
+    console.log(myLibrary[i].id);
+    console.log(myLibrary[i].read);
+    console.log(e.target.value);
+    if (
+      e.target.value === myLibrary[i].id &&
+      e.target.classList.contains("read-button")
+    ) {
+      e.target.classList.remove("read-button");
+      e.target.classList.add("not-read-button");
+      e.target.innerHTML = "Not Read";
+      myLibrary[i].read = false;
+    } else if (
+      e.target.value === myLibrary[i].id &&
+      e.target.classList.contains("not-read-button")
+    ) {
+      e.target.classList.add("read-button");
+      e.target.classList.remove("not-read-button");
+      e.target.innerHTML = "Read";
+      myLibrary[i].read = true;
+    } else {
+    }
   }
-  /*for (let i = 0; i < myLibrary.length; i++){
-        console.log(myLibrary[i].id);
-        console.log(e.target.value);
-        if (e.target.value === myLibrary[i].id){
-            alert (`it's a match`)
-        } else {
-            alert(`it's not`);
-        }*/
 }
 
 // enable user to change read on default card
