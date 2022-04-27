@@ -94,6 +94,7 @@ form.addEventListener("submit", (e) => {
   }
   bookTitle.classList.add("book-title");
   bookAuthor.classList.add("author");
+  bookPages.classList.add("pages");
   deleteButton.classList.add("delete-button");
   deleteButton.setAttribute("id", "remove-button");
 

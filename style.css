@@ -172,7 +172,7 @@ body {
 .book-card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: sp;
   align-items: center;
   background-color: white;
   box-shadow: rgba(143, 96, 96, 0.2) 0px 2px 8px 0px;
@@ -429,8 +429,4 @@ form {
 .book-title {
   font-weight: bold;
   max-width: 100%;
-}
-
-.author {
-    max-width: 290;
 }
