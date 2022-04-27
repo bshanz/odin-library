@@ -6,6 +6,7 @@ const title = document.getElementById("book-title-dom");
 const author = document.getElementById("author-dom");
 const pages = document.getElementById("pages-dom");
 const read = document.getElementById("read-button");
+const readDom = document.getElementById("read-dom");
 const grid = document.getElementById("grid");
 const remove = document.getElementById("remove-button");
 
@@ -32,9 +33,10 @@ submitBook.addEventListener("click", (e) => {
   e.preventDefault();
 
   // create new book
-  const book1 = new Book(title.value, author.value, pages.value, read.checked);
+  const book1 = new Book(title.value, author.value, pages.value, readDom.checked);
 
   console.log(read.checked);
+  console.log
 
   // add ID to new book
   book1.id = Date.now();
