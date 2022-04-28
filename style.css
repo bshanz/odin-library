@@ -430,3 +430,10 @@ form {
   font-weight: bold;
   max-width: 100%;
 }
+
+.upper-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 1.5rem;
+}

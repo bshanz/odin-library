@@ -9,7 +9,7 @@ const read = document.getElementById("read-button");
 const readDom = document.getElementById("read-dom");
 const grid = document.getElementById("grid");
 const remove = document.getElementById("remove-button");
-const form = document.querySelector('form');
+const form = document.querySelector("form");
 
 // create library array
 
@@ -56,6 +56,7 @@ form.addEventListener("submit", (e) => {
   // create elements
 
   const bookCard = document.createElement("div");
+  const upperCard = document.createElement("div");
   const bookTitle = document.createElement("div");
   const bookAuthor = document.createElement("div");
   const bookPages = document.createElement("div");
@@ -67,10 +68,14 @@ form.addEventListener("submit", (e) => {
   grid.appendChild(bookCard);
   bookCard.classList.add("book-card");
 
-  bookCard.appendChild(bookTitle);
-  bookCard.appendChild(bookAuthor);
-  bookCard.appendChild(bookAuthor);
-  bookCard.appendChild(bookPages);
+  bookCard.appendChild(upperCard);
+  upperCard.classList.add("upper-card");
+
+  upperCard.appendChild(bookTitle);
+  upperCard.appendChild(bookAuthor);
+  upperCard.appendChild(bookAuthor);
+  upperCard.appendChild(bookPages);
+
   bookCard.appendChild(readButton);
   bookCard.appendChild(deleteButton);
 
