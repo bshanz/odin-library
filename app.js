@@ -116,7 +116,6 @@ form.addEventListener("submit", (e) => {
 function removeButton(e) {
   const target = e.target;
   target.parentNode.remove();
-  //if remove value equals that objects id then remove it
 }
 
 function changeRead(e) {
@@ -167,9 +166,6 @@ read.addEventListener("click", (e) => {
 remove.addEventListener("click", (e) => {
   const target = e.target;
   target.parentNode.remove();
-  /*for (let i = 0; i < myLibrary.length; i++){
-  }*/
-  //if remove value equals that objects id then remove it
 });
 
 // Get the modal
