@@ -55,77 +55,81 @@ form.addEventListener("submit", (e) => {
     readDom.checked
   );
 
-  // add ID to new book
-  book1.id = `${book1.title}${book1.author}${book1.pages}`;
-
-  // add new book to myLibrary
-
-  myLibrary.push(book1);
-  // close the form modal
-
-  modal.style.display = "none";
-  // reset the form
-  document.querySelector("form").reset();
-
-  // create elements
-
-  const bookCard = document.createElement("div");
-  const upperCard = document.createElement("div");
-  const bookTitle = document.createElement("div");
-  const bookAuthor = document.createElement("div");
-  const bookPages = document.createElement("div");
-  const readButton = document.createElement("button");
-  const deleteButton = document.createElement("button");
-
-  // append to DOM
-
-  grid.appendChild(bookCard);
-  bookCard.classList.add("book-card");
-
-  bookCard.appendChild(upperCard);
-  upperCard.classList.add("upper-card");
-
-  upperCard.appendChild(bookTitle);
-  upperCard.appendChild(bookAuthor);
-  upperCard.appendChild(bookAuthor);
-  upperCard.appendChild(bookPages);
-
-  bookCard.appendChild(readButton);
-  bookCard.appendChild(deleteButton);
-
-  // add values
-  bookTitle.innerText = book1.title;
-  bookAuthor.innerText = book1.author;
-  bookPages.innerText = `${book1.pages} pages`;
-  readButton.value = `${book1.title}${book1.author}${book1.pages}`;
-  deleteButton.innerHTML = "Remove";
-  deleteButton.value = `${book1.title}${book1.author}${book1.pages}`;
-
-  console.log(deleteButton.value);
-
-  // add classes and IDs
-  if (book1.read === true) {
-    readButton.classList.add("read-button");
-    readButton.innerHTML = "Read";
+  if (title.value === "" || author.value === "" || pages.value === "") {
+    alert(
+      "Please fill out the title, author, and pages fields. Pages must be a number."
+    );
+    return false;
   } else {
-    readButton.classList.add("not-read-button");
-    readButton.innerHTML = "Not read";
+    // add ID to new book
+    book1.id = `${book1.title}${book1.author}${book1.pages}`;
+
+    // add new book to myLibrary
+
+    myLibrary.push(book1);
+    // close the form modal
+
+    modal.style.display = "none";
+    // reset the form
+    document.querySelector("form").reset();
+
+    // create elements
+
+    const bookCard = document.createElement("div");
+    const upperCard = document.createElement("div");
+    const bookTitle = document.createElement("div");
+    const bookAuthor = document.createElement("div");
+    const bookPages = document.createElement("div");
+    const readButton = document.createElement("button");
+    const deleteButton = document.createElement("button");
+
+    // append to DOM
+
+    grid.appendChild(bookCard);
+    bookCard.classList.add("book-card");
+
+    bookCard.appendChild(upperCard);
+    upperCard.classList.add("upper-card");
+
+    upperCard.appendChild(bookTitle);
+    upperCard.appendChild(bookAuthor);
+    upperCard.appendChild(bookAuthor);
+    upperCard.appendChild(bookPages);
+
+    bookCard.appendChild(readButton);
+    bookCard.appendChild(deleteButton);
+
+    // add values
+    bookTitle.innerText = book1.title;
+    bookAuthor.innerText = book1.author;
+    bookPages.innerText = `${book1.pages} pages`;
+    readButton.value = `${book1.title}${book1.author}${book1.pages}`;
+    deleteButton.innerHTML = "Remove";
+    deleteButton.value = `${book1.title}${book1.author}${book1.pages}`;
+
+    // add classes and IDs
+    if (book1.read === true) {
+      readButton.classList.add("read-button");
+      readButton.innerHTML = "Read";
+    } else {
+      readButton.classList.add("not-read-button");
+      readButton.innerHTML = "Not read";
+    }
+    bookTitle.classList.add("book-title");
+    bookAuthor.classList.add("author");
+    bookPages.classList.add("pages");
+    deleteButton.classList.add("delete-button");
+    deleteButton.setAttribute("id", "remove-button");
+
+    // add event listener to dynamic book card to remove it
+
+    deleteButton.addEventListener("click", removeButton);
+
+    // add event listener to dynamic book card to change red status
+    readButton.addEventListener("click", changeRead);
   }
-  bookTitle.classList.add("book-title");
-  bookAuthor.classList.add("author");
-  bookPages.classList.add("pages");
-  deleteButton.classList.add("delete-button");
-  deleteButton.setAttribute("id", "remove-button");
-
-  // add event listener to dynamic book card to remove it
-
-  deleteButton.addEventListener("click", removeButton);
-
-  // add event listener to dynamic book card to change red status
-  readButton.addEventListener("click", changeRead);
-
-  console.log(myLibrary);
 });
+
 // enable user to delete dynamic books
 function removeButton(e) {
   const target = e.target;
@@ -135,9 +139,6 @@ function removeButton(e) {
 function changeRead(e) {
   //const target = e.target;
   for (let i = 0; i < myLibrary.length; i++) {
-    console.log(myLibrary[i].id);
-    console.log(myLibrary[i].read);
-    console.log(e.target.value);
     if (
       e.target.value === myLibrary[i].id &&
       e.target.classList.contains("read-button")
@@ -163,7 +164,6 @@ function changeRead(e) {
 
 read.addEventListener("click", (e) => {
   const target = e.target;
-  console.log(e.target);
   if (e.target.classList.contains("read-button")) {
     e.target.classList.remove("read-button");
     e.target.classList.add("not-read-button");
@@ -207,3 +207,12 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+
+//validate form with JS
+
+function validateForm() {
+  if (title.value === "") {
+    alert("Title must be filled out");
+    return false;
+  }
+}
