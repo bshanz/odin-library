@@ -55,6 +55,7 @@ form.addEventListener("submit", (e) => {
     readDom.checked
   );
 
+  // Javascript form validation to make sure all fields are filled
   if (title.value === "" || author.value === "" || pages.value === "") {
     alert(
       "Please fill out the title, author, and pages fields. Pages must be a number."
