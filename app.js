@@ -56,11 +56,13 @@ form.addEventListener("submit", (e) => {
   );
 
   // Javascript form validation to make sure all fields are filled
+  // if the title, author, or pages field is blank, don't let the form submit
   if (title.value === "" || author.value === "" || pages.value === "") {
     alert(
       "Please fill out the title, author, and pages fields. Pages must be a number."
     );
     return false;
+    // if the fields are filled out, let the form submit
   } else {
     // add ID to new book
     book1.id = `${book1.title}${book1.author}${book1.pages}`;
